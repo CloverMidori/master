@@ -13,7 +13,12 @@ import json
 import datetime
 
 # tokens
-import config as cf
+#import config as cf
+
+#追加部分
+config = open('qitta_json.json', 'r')
+cf = json.load(config)
+
 # cog
 from cogs import m10s_remainder
 from cogs import takumi_jyanken
@@ -27,8 +32,11 @@ bot = commands.Bot(command_prefix="g.", status=discord.Status.invisible,
                    allowed_mentions=discord.AllowedMentions(everyone=False),
                    intents=discord.Intents.all())
 bot.color = 0xe8da1c
-bot.developers = cf.bot_developers
-bot.GAPI_TOKEN = cf.google_api_key
+#bot.developers = cf.bot_developers
+#bot.GAPI_TOKEN = cf.google_api_key
+
+bot.developers = cf[dev]
+bot.GAPI_TOKEN = cf[gak]
 
 bot.StartTime = datetime.datetime.now()
 
@@ -169,4 +177,5 @@ async def on_command(ctx):
     await ch.send(embed=e)
 
 
-bot.run(cf.token)
+#bot.run(cf.token)
+bot.run(cf[token])
