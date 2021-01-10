@@ -16,7 +16,7 @@ import datetime
 #import config as cf
 
 #追加部分
-config = open('qitta_json.json', 'r')
+config = open('config.json', 'r')
 cf = json.load(config)
 
 # cog
